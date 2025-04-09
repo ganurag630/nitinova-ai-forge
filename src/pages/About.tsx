@@ -4,6 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Users, Award, HeartHandshake } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Stats from '@/components/Stats';
+import Testimonials from '@/components/Testimonials';
+import TrustBadges from '@/components/TrustBadges';
 
 const About = () => {
   const values = [
@@ -26,6 +30,29 @@ const About = () => {
       title: "Ethical AI",
       description: "We're committed to developing responsible AI solutions that align with your values and goals.",
       icon: HeartHandshake
+    }
+  ];
+
+  const teamMembers = [
+    {
+      name: "Alex Chen",
+      role: "Founder & CEO",
+      bio: "Former tech executive with 15+ years of experience in AI and digital transformation."
+    },
+    {
+      name: "Sophia Rodriguez",
+      role: "CTO",
+      bio: "AI researcher and software architect with a background in machine learning applications."
+    },
+    {
+      name: "Michael Johnson",
+      role: "Web Development Director",
+      bio: "Full-stack developer with expertise in modern web technologies and e-commerce solutions."
+    },
+    {
+      name: "Emily Williams",
+      role: "AI Solutions Lead",
+      bio: "Specialist in natural language processing and automation systems for business operations."
     }
   ];
 
@@ -70,6 +97,23 @@ const About = () => {
                 ))}
               </div>
               
+              {/* Team Section */}
+              <h2 className="text-2xl font-semibold text-center mb-8">Meet Our Leadership</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {teamMembers.map((member, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center">
+                    <div className="w-16 h-16 rounded-full bg-nitinova-100 text-nitinova-500 flex items-center justify-center mr-4 text-xl font-bold">
+                      {member.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">{member.name}</h3>
+                      <p className="text-nitinova-500 font-medium text-sm mb-1">{member.role}</p>
+                      <p className="text-gray-600 text-sm">{member.bio}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
               <div className="bg-nitinova-50 rounded-xl p-8 text-center">
                 <h2 className="text-2xl font-semibold mb-4">Our Expertise</h2>
                 <p className="text-gray-600 mb-6">
@@ -77,13 +121,22 @@ const About = () => {
                   we deliver holistic solutions that address your specific industry challenges 
                   and growth opportunities.
                 </p>
-                <Button className="bg-nitinova-500 hover:bg-nitinova-600 text-white">
-                  Get in Touch
+                <Button asChild className="bg-nitinova-500 hover:bg-nitinova-600 text-white">
+                  <Link to="/contact">Get in Touch</Link>
                 </Button>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Trust Badges */}
+        <TrustBadges />
+        
+        {/* Stats Section */}
+        <Stats />
+        
+        {/* Testimonials */}
+        <Testimonials />
       </main>
       
       <Footer />
